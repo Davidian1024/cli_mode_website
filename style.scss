@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'VT323';
+    src: url('static/fonts/VT323-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #008080;
+}
+
+.terminal {
+    background-color: black;
+    color: goldenrod;
+    font-family: 'VT323';
+    filter: blur(0.05rem);
+}

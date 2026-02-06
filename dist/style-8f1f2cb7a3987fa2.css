@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "VT323";
+  src: url("static/fonts/VT323-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  background-color: #008080;
+}
+
+.terminal {
+  background-color: black;
+  color: goldenrod;
+  font-family: "VT323";
+  filter: blur(0.05rem);
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22../../style.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAA;EACI;EACA;EACA;EACA;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;EACA%22,%22file%22:%22style.css%22%7D */
