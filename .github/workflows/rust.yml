@@ -23,6 +23,22 @@ jobs:
       with:
         targets: wasm32-unknown-unknown
 
+    - name: Cache cargo registry
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+        key: cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: cargo-registry-
+
+    - name: Cache target
+      uses: actions/cache@v4
+      with:
+        path: target
+        key: cargo-target-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: cargo-target-
+
     - name: Install Trunk
       run: cargo install trunk
 
