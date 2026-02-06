@@ -17,6 +17,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Add wasm32-unknown-unknown compilation target
+      run: rustup target add wasm32-unknown-unknown
+
     - name: Install Trunk
       run: |
         if ! command -v trunk >/dev/null; then
