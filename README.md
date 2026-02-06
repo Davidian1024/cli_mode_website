@@ -38,3 +38,8 @@ This will produce a fully built version of the site in the dist directory.  It c
 ```
 trunk build --release
 ```
+
+# Deployed app built from main branch
+
+A GitHub action was setup to build and deploy this to GitHub pages:
+https://davidian1024.github.io/cli_mode_website/
