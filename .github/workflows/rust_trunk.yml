@@ -39,6 +39,9 @@ jobs:
     - name: Build (with trunk)
       run: trunk build
 
+    - name: debug trunk build
+      run: ls -lR dist
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
