@@ -326,7 +326,7 @@ fn App() -> Html {
     log!("fn App() returning...");
     html! {
         <>
-            <div style="width: 100%;">
+            <div style="width: 100%; background-image: url('static/images/library.png'); background-size: 100% 100%; padding: 3rem; width: 109rem; height: 65rem; ">
                 // monitor div
                 <div style="margin: 0 auto; background-image: url('static/images/monitor.png'); background-size: 100% 100%; padding-top: 7rem; padding-bottom: 6rem; padding-left:10rem; padding-right:11rem; width: 80rem; height: 40rem; border-radius: 1rem; box-shadow: 4px 4px 10px rgba(0,0,0,0.5);">
 
