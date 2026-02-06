@@ -20,7 +20,7 @@ jobs:
     - name: Install Trunk
       run: |
         if ! command -v trunk >/dev/null; then
-          cargo install trunk --version 0.22.0
+          cargo install trunk --version 0.21.14
         fi
 
     - name: Cache Cargo bin
