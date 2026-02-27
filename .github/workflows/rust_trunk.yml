@@ -21,19 +21,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Report Environment
-      run: printenv
-
     - name: Cache Cargo bin
       uses: actions/cache@v4
       with:
-        path: $CARGO_HOME/bin
+        path: /usr/local/cargo/bin
         key: cargo-bin-${{ hashFiles('**/Cargo.lock') }}
         restore-keys: cargo-bin-
     
-    - name: Debug Cargo bin cache
-      run: ls -lR $CARGO_HOME
-
     - name: Cache target
       uses: actions/cache@v4
       with:
