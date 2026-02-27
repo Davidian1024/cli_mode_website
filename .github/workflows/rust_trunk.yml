@@ -90,6 +90,14 @@ jobs:
     - name: debug trunk build
       run: ls -lR dist
 
+    - name: Install NPM
+      run: |
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+        \. "$HOME/.nvm/nvm.sh"
+        nvm install 24
+        node -v # Should print "v24.14.0".
+        npm -v # Should print "11.9.0".
+
     - name: Deploy to Cloudflare Pages
       uses: cloudflare/wrangler-action@v3.13
       with:
