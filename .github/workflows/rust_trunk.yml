@@ -87,9 +87,14 @@ jobs:
     - name: Build (with trunk)
       run: trunk build --public-url /${{ github.event.repository.name }}/
 
-    - name: debug trunk build
+    - name: Report build contents
       run: ls -lR dist
 
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Install NPM
       run: |
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
@@ -98,10 +103,10 @@ jobs:
         node -v # Should print "v24.14.0".
         npm -v # Should print "11.9.0".
 
-    # - name: Deploy to Cloudflare Pages
-    #   uses: cloudflare/wrangler-action@v3.13
-    #   with:
-    #     apiToken: ${{ secrets.TEST_BUILD_CLOUDFLARE_TOKEN }}
-    #     command: pages deploy out --project-name=test-build-website
-    #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/wrangler-action@v3.13
+      with:
+        apiToken: ${{ secrets.TEST_BUILD_CLOUDFLARE_TOKEN }}
+        command: pages deploy out --project-name=test-build-website
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
         
