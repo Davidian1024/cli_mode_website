@@ -24,7 +24,7 @@ jobs:
     - name: Cache Cargo bin
       uses: actions/cache@v4
       with:
-        path: ~/.cargo/bin
+        path: ${{ env.CARGO_HOME }}/bin
         key: cargo-bin-${{ hashFiles('**/Cargo.lock') }}
         restore-keys: cargo-bin-
 
