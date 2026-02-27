@@ -98,9 +98,10 @@ jobs:
         node -v # Should print "v24.14.0".
         npm -v # Should print "11.9.0".
 
-    - name: Deploy to Cloudflare Pages
-      uses: cloudflare/wrangler-action@v3.13
-      with:
-        apiToken: ${{ secrets.TEST_BUILD_CLOUDFLARE_TOKEN }}
-        command: pages deploy out --project-name=test-build-website
-        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Deploy to Cloudflare Pages
+    #   uses: cloudflare/wrangler-action@v3.13
+    #   with:
+    #     apiToken: ${{ secrets.TEST_BUILD_CLOUDFLARE_TOKEN }}
+    #     command: pages deploy out --project-name=test-build-website
+    #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        
