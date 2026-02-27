@@ -24,6 +24,20 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Cache Cargo bin
+      uses: actions/cache@v4
+      with:
+        path: ~/.cargo/bin
+        key: cargo-bin-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: cargo-bin-
+
+    - name: Cache target
+      uses: actions/cache@v4
+      with:
+        path: target
+        key: target-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: target-
+
     - name: Report Toolchain Info
       run: |
         rustc --version
@@ -71,25 +85,11 @@ jobs:
     - name: Add wasm32-unknown-unknown compilation target
       run: rustup target add wasm32-unknown-unknown
 
-    - name: Cache Cargo bin
-      uses: actions/cache@v4
-      with:
-        path: ~/.cargo/bin
-        key: cargo-bin-${{ hashFiles('**/Cargo.lock') }}
-        restore-keys: cargo-bin-
-
     - name: Install Trunk
       run: |
         if ! command -v trunk >/dev/null; then
           cargo install trunk --version 0.21.14
         fi
-
-    - name: Cache target
-      uses: actions/cache@v4
-      with:
-        path: target
-        key: target-${{ hashFiles('**/Cargo.lock') }}
-        restore-keys: target-
 
     - name: Build (with trunk)
       run: trunk build --public-url /${{ github.event.repository.name }}/
