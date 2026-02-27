@@ -42,7 +42,7 @@ jobs:
           var-cache-apk-
 
     - name: Install OS Packages
-      run: apk update && apk add curl build-base
+      run: apk update && apk add curl build-base libc6-compat
 
     - name: Cache Cargo bin
       uses: actions/cache@v4
