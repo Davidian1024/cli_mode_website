@@ -12,10 +12,14 @@ permissions:
 env:
   CARGO_TERM_COLOR: always
 
+
+
+
 jobs:
   build:
-
-    runs-on: linux_amd64
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:3.22.1
 
     steps:
     - uses: actions/checkout@v4
