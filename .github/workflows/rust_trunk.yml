@@ -19,10 +19,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: alpine:3.22.1
+      image: rust:latest
+      # image: alpine:3.22.1
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Report Toolchain Info
+      run: |
+        rustc --version
+        cargo --version
+        rustup show
 
     - name: Report OS-Release Info
       run: cat /etc/os-release
@@ -87,8 +94,9 @@ jobs:
     - name: debug trunk build
       run: ls -lR dist
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/wrangler-action@v3.13
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+        apiToken: ${{ secrets.TEST_BUILD_CLOUDFLARE_TOKEN }}
+        command: pages deploy out --project-name=test-build-website
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
