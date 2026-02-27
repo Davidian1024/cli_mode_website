@@ -19,8 +19,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: rust:latest
-      # image: alpine:3.22.1
+      image: rust:1.93.1
 
     steps:
     - uses: actions/checkout@v4
@@ -36,9 +35,6 @@ jobs:
 
     - name: Report Shell Info
       run: echo $SHELL
-
-    - name: List file system
-      run: ls -lR /
 
     - name: Cache APK packages
       uses: actions/cache@v4
