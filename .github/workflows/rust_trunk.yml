@@ -52,6 +52,7 @@ jobs:
 
     - name: Install Trunk
       run: |
+        ls -lR ${{ env.CARGO_HOME }}/bin
         if ! command -v trunk >/dev/null; then
           cargo install trunk --version 0.21.14
         fi
