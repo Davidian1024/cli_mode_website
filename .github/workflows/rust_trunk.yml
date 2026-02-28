@@ -87,4 +87,4 @@ jobs:
         wranglerVersion: "4.69.0"
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        command: pages deploy dist --project-name={{ $PROJECT_NAME }}
+        command: pages deploy dist --project-name=${{ env.PROJECT_NAME }}
