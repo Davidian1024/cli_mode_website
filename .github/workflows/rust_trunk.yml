@@ -69,9 +69,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
 
+    env:
+      PROJECT_NAME: cli-mode-website
+
     steps:
 
     - uses: actions/checkout@v4
+
+    - name: Create project (if missing)
+      run: npx wrangler pages project create "$PROJECT_NAME" || echo "Project may already exist"
+      env:
+        CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
     - name: Build & Deploy Worker
       uses: cloudflare/wrangler-action@v3
@@ -79,4 +87,4 @@ jobs:
         wranglerVersion: "4.69.0"
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        workingDirectory: 'dist'
+        command: pages deploy dist --project-name="$PROJECT_NAME"
