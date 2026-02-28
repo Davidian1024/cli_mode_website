@@ -60,7 +60,6 @@ jobs:
         ls -ltR ~
 
     - name: Build (with trunk)
-      # run: trunk build --public-url /${{ github.event.repository.name }}/
       run: trunk build
 
     - name: Report build contents
@@ -80,8 +79,6 @@ jobs:
       PROJECT_NAME: cli-mode-website
 
     steps:
-
-    - uses: actions/checkout@v4
 
     - name: Create project (if missing)
       run: npx wrangler pages project create "$PROJECT_NAME" --production-branch main || echo "Project may already exist"
